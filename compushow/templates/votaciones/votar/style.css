@@ -1,0 +1,174 @@
+.categoria {
+    display         : inline-table;
+    padding         : 5px;
+    border-radius   : 5px;
+    margin          : 5px;
+}
+
+.categoria:hover {
+    box-shadow      : 0px 0px 20px rgb(255,255,255);
+    cursor: pointer;
+}
+
+.votado {
+    background-color: rgba(0,120,0,0.7);
+}
+
+.no_votado {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.seleccionado {
+    font-weight: bold;
+    margin     : 5px 0px;
+    box-shadow      : 0px 0px 32px rgb(255,255,255);
+}
+
+#cont_votacion {
+    display: block;
+    height : 500px;
+    width  : 960px;
+    margin : 0px auto;
+}
+
+#lista_nominados {
+    display         : inline-block;
+    width           : 390px;
+    height          : 420px;
+    overflow-y      : auto;
+    background-color: rgba(0,0,0,0.7);
+    border-radius   : 5px;
+    border          : solid 1px black;
+}
+
+#detalles_nominado{
+    display: inline-block;
+    float: right;
+    width: 550px;
+}
+
+
+#renglon_superior {
+    display   : table;
+    margin    : 5px;
+    width     : 100%;
+    height    : 30px;
+    margin-top: -40px;
+}
+
+#nominados {
+    display: inline-table;
+    width  : 300px;
+}
+
+#nominados div {
+    display         : inline-table;
+    background-color: rgb(0,0,0);
+    padding         : 5px;
+    border-radius   : 5px;
+    margin          : 2px 5px;
+}
+
+
+#boton_votar {
+    display         : inline-table;
+    border-radius   : 5px;
+    font-size       : 24px;
+    font-weight     : bolder;
+    padding         : 2px 20px;
+    float           : right;
+}
+
+#boton_votar:hover {
+    cursor     : pointer;
+}
+
+.votar_si {
+    background-color: green;
+}
+
+.votar_si:hover {
+    box-shadow : inset 0px 0px 20px rgb(0,255,0), 0px 0px 20px rgb(0,255,0);
+}
+
+.votar_no {
+    background-color: darkred;
+}
+
+.votar_no:hover {
+    box-shadow : inset 0px 0px 20px rgb(255,0,0), 0px 0px 20px rgb(255,0,0);
+}
+
+
+
+.nominado {
+    padding         : 5px;
+    border-radius   : 5px;
+    margin          : 5px;
+}
+
+.nominado:hover {
+    box-shadow : 0px 0px 20px rgb(255,255,255);
+    cursor     : pointer;
+}
+
+.nominado div {
+    display: inline-block;
+    margin : auto 0px;
+}
+
+.nominado div img{
+    border-radius  : 5px;
+}
+
+
+
+/** Media **/
+
+#vista_media {
+    display: block;
+    background-color: rgba(0,0,0,0.7);
+    height: 300px;
+    width: 100%;
+    margin: 0px auto;
+    overflow: auto;
+    border-radius   : 10px;
+    border: solid 1px black;
+}
+
+#vista_media div{
+    display   : table;
+    margin    : auto auto;
+}
+
+#vista_media div img {
+    max-width: 530px;
+}
+
+#lista_media {
+    display: block;
+    width: 100%;
+    margin: 5px auto;
+    background-color: rgba(0,0,0,0.4);
+    border: solid 1px black;
+    border-radius   : 10px;
+    height: 110px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space : nowrap;
+}
+
+
+.med_cont {
+    display         : inline-table;
+    background-color: rgba(0,0,0,0.7);
+    padding         : 5px;
+    border-radius   : 5px;
+    margin: 10px 5px;
+}
+
+.med_cont:hover {
+    cursor: pointer;
+    box-shadow      : 0px 0px 20px rgb(255,255,255);
+    background-color: rgba(30,30,30,0.7);
+}

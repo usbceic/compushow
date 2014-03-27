@@ -1,0 +1,22 @@
+{% extends "votaciones/base/index.html" %}
+
+{% block css %}
+<link href="/templates/votaciones/funcion/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% endblock css %}
+
+{% block parametros_body %}{% endblock %}  
+
+{% block contenido %}
+<form method="post" action="funcion_do" name="formulario">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="funcion" />
+    <label>
+        <strong>Agregar Carnets:</strong>
+        Formato por linea: "12-34567 nombre1 nombre2 ... ApellidoN"<br>
+        <textarea type="text" name="carnets" autocomplete="off" cols="40" rows="20"></textarea>
+    </label>
+    <div id="boton_iniciar">
+        <input id="iniciar_btn" type="submit" value="Agregar">
+    </div>
+</form>
+{% endblock contenido %}

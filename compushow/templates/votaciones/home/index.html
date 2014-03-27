@@ -1,0 +1,28 @@
+{% extends "votaciones/base/index.html" %}
+
+{% block css %}
+    <link href="/templates/votaciones/home/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% endblock css %}
+
+{% block parametros_body %}{% endblock %}  
+
+{% block contenido %}
+    <div id="left"
+         onclick="window.location = 'votaciones';"
+         >
+        <h1>Votaciones</h1>
+        <label>Debes haber iniciado sesion.</label>
+    </div>       
+    
+    <div id="center"
+         onclick="window.location = 'info';"
+         >
+        <h1>Información <br>del evento</h1>
+    </div>
+    
+    <div id="right"
+         onclick="window.location = 'construccion';"
+         >
+        <h1>Ediciones <br>anteriores</h1>
+    </div> 
+{% endblock contenido %}

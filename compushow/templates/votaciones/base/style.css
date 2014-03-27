@@ -1,0 +1,180 @@
+/* Base: */
+
+body {
+    background-color: black;
+    color: white;
+    background-image: url("/templates/votaciones/media/fondo_bokeh.jpg");
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    font-family: sans-serif;
+}
+
+#wrapper {
+    margin : 0 auto;
+    padding: 0;
+}
+
+#contenedor_header {
+    width: 100%;
+    height: 120px;
+    padding: 5px 0px;
+}
+
+#header {
+    width : 1000px;
+    height: 120px;
+    margin: 0px auto;
+}
+
+#page {
+    width : 1000px;
+    height: 100%;
+    margin: 0px auto;
+    display: table;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+/* Bloques */
+#header #logo, #header #menu, #header #logo div {
+    float: left;
+}
+
+#header #logo #titulo {
+    float  : left;
+    padding: 0px 10px;
+    line-height: 7px;
+    float  : left;
+}
+
+#contenedor_footer {
+    width : 100%;
+    height: 100px;
+}
+
+#footer {
+    height: 40px;
+    padding-top: 1px;
+    width : 1000px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 5px;
+}
+
+
+
+
+#user_info_area {
+    float        : right;
+    margin-top   : 30px;
+    margin-bottom: 20px;
+    min-width    : 200px;
+}
+
+#user_info_area h1 {
+    line-height  : 10px;
+    margin-bottom: 0px;
+}
+
+#user_info_area label {
+    font-size  : 16px;
+    font-weight: bold;
+    line-height: 0px;
+    margin-left: 10px;
+}
+
+#user_info_area .boton {
+    float: right;
+}
+
+/* Funcionalidades extras */
+
+/* Estilo de formularios */
+form label, form label strong {
+    display: block;
+}
+
+form label .indicadorOk {
+    width: 24px; height: 24px;
+    display: inline-block;
+    margin-bottom: -5px;
+    
+    /*border-radius: 100%;
+    background-color: #2ffe15;
+    box-shadow : inset 0px 0px 5px #111, 0px 0px 5px rgb(0,255,0);*/
+    background-image: url("/templates/votaciones/media/Correct.png");
+}
+
+form label .indicadorKo {
+    width: 24px; height: 24px;
+    display      : inline-block;
+    margin-bottom: -5px;
+
+    /*border-radius: 100%;
+    background-color: rgba(255,0,0,0.8);
+    box-shadow : inset 0px 0px 8px #111;*/
+    background-image: url("/templates/votaciones/media/Incorrect.png");
+}
+
+/** Estilo de boton **/
+.boton {
+    padding         : 1px 10px;
+    background-color: gray;
+    border-radius   : 8px;
+    box-shadow      : inset 0px 0px 10px #000;
+    display         : table;
+}
+
+.boton:hover {
+    background-color: #c7c7c7;
+    cursor          : pointer;
+}
+
+/** Estilo de area de ayuda **/
+
+.ayuda {
+    padding      : 5px;
+    margin       : 10px 0px;
+
+    color           : rgba(255,255,130,0.99);
+    background-color: rgba(0,0,0,0.4);
+    border-radius   : 5px;
+}
+
+
+/** Estilo de contenedores **/
+.contenedor {
+    padding         : 10px;
+    
+    background-color: rgba(20,20,20,0.4);
+    box-shadow      : inset 0px 0px 200px rgb(0,0,20);
+    border          : 2px solid rgba(0,0,0,0.2);
+    border-radius   : 15px;
+}
+
+.contenedor h1 {
+    position : relative;
+    top      : -10px;
+    left     : -40px;
+    font-size: 20px;
+
+    padding  : 5px;
+    display  :table;
+
+    background-color: rgba(0,0,40,0.6);
+    box-shadow      : inset 0px 0px 40px rgb(0,0,0);
+    border          : 1px solid rgba(0,0,0,0.2);
+    border-radius   : 5px;
+}
+
+
+.tituloExt {
+    color      : black;
+    text-shadow: rgb(255,255,255) 0px 0px 5px;
+    font-weight: bolder;
+}

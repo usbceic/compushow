@@ -1,0 +1,30 @@
+/* Area de login */
+#contenedor_signup {
+    width      : 550px;
+    margin     : 20px 0px;
+    text-align : left;
+    float      : left;
+}
+
+#contenedor_signup input {
+    width: 450px;
+    display: inline;
+}
+
+#contenedor_login {
+    width      : 250px;
+    margin     : 20px 0px;
+    float      : right;
+}
+
+#contenedor_login #boton_iniciar{
+    float:right;
+}
+
+#contenedor_signup #boton_iniciar {
+    float:left;
+}
+
+#contenedor_signup #boton_iniciar input {
+    width: auto;
+}

@@ -1,0 +1,12 @@
+#left, #center, #right {
+    padding: 180px 0px;
+    width  : 330px;
+    height : 100px;
+    float  : left;
+    text-align: center;
+    cursor : pointer;
+}
+
+#left label, #center label, #right label {
+    color: #585858;
+}

@@ -1,0 +1,31 @@
+#left, #center, #right {
+    padding: 180px 0px;
+    width  : 326px;
+    height : 100px;
+    float  : left;
+    text-align: center;
+    cursor : pointer;
+
+    box-shadow : inset 0px 0px 200px rgb(0,0,0);
+    border : 2px solid rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+#left h1, #center h1, #right h1{
+    text-shadow: rgb(0,0,0) 5px 5px 10px;
+}
+
+#left:hover, #center:hover, #right:hover {
+    box-shadow : inset 0px 0px 200px rgb(30,30,30);
+    border : 2px solid rgba(255,255,255,0.2);
+}
+
+#left:hover h1, #center:hover h1, #right:hover h1{
+    text-shadow: rgb(0,0,0) 5px 5px 5px, rgb(255,255,255) 0px 0px 10px;
+}
+
+#left label, #center label, #right label {
+    color: #e8e8e8;
+    font-weight: bold;
+    text-shadow: rgb(0,0,0) 0px 0px 3px;
+}

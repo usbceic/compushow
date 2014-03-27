@@ -1,0 +1,101 @@
+{% extends "votaciones/base/index.html" %}
+
+{% block css %}
+<link href="/templates/votaciones/filtrar/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% endblock css %}
+
+{% block javascript %}
+<script type="text/javascript">
+    $import("/templates/votaciones/filtrar/script.js");
+
+    function main() {
+    };
+</script>
+{% endblock %}
+
+
+{% block parametros_body %} onload="main()" {% endblock %}
+
+{% block contenido %}
+<h1 class="tituloExt">Filtrado de Nominaciones</h1>
+
+<div id="select_categoria" class="contenedor">
+    <strong>Categoría</strong>
+    <select name="categoria" id="categoria" onchange="cambio_de_categoria()">
+        {%for c in categorias%}
+        <option value="{{c.pk}}">{{c.nombre}}</option>
+        {%endfor%}
+    </select>
+</div>
+
+
+{% if categoria %}
+
+
+<div id="nominaciones" class="contenedor">
+    <h1>{{categoria}}</h1>
+
+
+    <div id="lista_nominaciones">
+        {% for voto in votos %}
+        <div class="nominacion contenedor" id="nominacion{{voto.pk}}">
+            <h1>{{voto.nominacion.categoria.nombre}}</h1>
+            <label><strong>Fecha:</strong> {{voto.fecha|date:"D d M"}}</label><br>
+            <div class="lista_nominados_cont">
+            <strong>Nominado/s:</strong>
+            {% for nominado in nominados%}
+                {% if nominado.nominacion == voto.nominacion %}
+                <div class="nombre_nominado">
+                {{nominado.nombre}}
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+
+            <strong>Fotos:</strong>
+            <div id="cont_fotos">
+                {% for foto in fotos %}
+                    {% if foto.media == voto.media %}
+                    <div class="med_cont" onclick="window.location='{{foto.imagen.url}}';">
+                        <img src="{{foto.imagen.url}}" alt="Imagen{{foto.pk}}" width="64px"/>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <strong>Videos:</strong>
+            <div id="cont_videos">
+                {% for video in videos %}
+                    {% if video.media == voto.media %}
+                    <div class="med_cont" onclick="window.location='http://www.youtube.com/watch?v={{video.link}}';">
+                        <img src="http://img.youtube.com/vi/{{video.link}}/2.jpg" alt="http://www.youtube.com/watch?v={{video.link}}" width="64px"/>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="eliminar_nominacion"
+                 onclick="eliminar_voto({{voto.pk}})"
+                 >Eliminar Nominacion</div>
+        </div>
+        {% empty %}
+        <h1>No tienes nominaciones</h1>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% else %}
+
+
+<div class="ayuda">
+    Selecciona una categoría para filtrar nominaciones.
+    <div id="icono_ayuda"></div>
+</div>
+
+
+{% endif %}
+
+
+
+{% endblock contenido %}

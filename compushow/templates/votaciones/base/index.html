@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+Sistema de Compushow.
+
+
+-->
+<html>
+    <head>
+        <title>{% block titulo %}Compushow {% now "Y"%}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link href="/templates/votaciones/base/style.css" rel="stylesheet" type="text/css" media="screen" />
+        {% block css %}{% endblock %}
+        
+        <script type="text/javascript" src="/templates/prototype.js"></script>
+
+        <script type="text/javascript" src="/templates/votaciones/base/script.js"></script>
+        
+        <script type="text/javascript">
+            /**
+             * @function $import(path)
+             * Carga un archivo de javascript en el header y asegura que no haya
+             * repeticiones.
+             * @augments
+             * path - la direccion url del archivo .js a cargar.
+             */
+            function $import(path){
+                //Importando js_extensions:
+                var scripts = document.getElementsByTagName("script");
+                for (var i=0; scripts.length > i; i++){
+                    if (scripts[i].src.match(path)) return false;
+                }
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = path;
+                document.getElementsByTagName('head')[0].appendChild(script);
+                return true;
+                
+            }
+        </script>
+        
+        {% block javascript %}{% endblock %}
+    </head>
+    
+    <body {% block parametros_body %}{% endblock %}>
+        <div id="wrapper">
+            
+            <!-- Begin #header -->
+            <div id="contenedor_header">
+                {% block header %}
+                <div id="header">
+                    <div id="logo" onclick="window.location = '/';">
+                        <div id="logo_carrera">
+                            <img src="/templates/votaciones/media/Logo128.png" alt="logo" width="98" height="100">
+                        </div>
+                        <div id="titulo">
+                            <h1>Compushow {% now "Y"%}</h1>
+                            <label>Ingeniería de la Computación</label>
+                        </div>
+                    </div>
+                    <div id="menu">
+                        {% block menu %}
+                        {% endblock menu %}
+                    </div>
+                    {% block user_area %}
+                    <div id="user_info_area" class="contenedor">
+                        {% if hay_usuario %}
+                            <h1>Usuario:</h1>
+                            <label>{{ usuario.get_full_name|default:usuario.username }}</label>
+                            <div class="boton"
+                                 onclick="window.location = 'logout_do?next={{direccion}}';"
+                                 >
+                                Salir
+                            </div>
+                        {% else %}
+                            <h1>Sin sesión:</h1>
+                            <div class="boton"
+                                 onclick="window.location = 'login?next={{direccion}}';"
+                                 >
+                                Iniciar Sesión
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endblock user_area %}
+                </div>
+                {% endblock header %}
+            </div>
+            <!-- end #header -->
+            
+            
+            <!-- Begin #page -->
+            <div id="page">
+                {% block contenido %}
+                
+                {% endblock contenido %}
+            </div>
+            <!-- end #page -->
+            
+            
+        </div>
+        
+        
+        <!-- Begin #footer -->
+        <div id="contenedor_footer">
+            <div id="footer">
+                <p>Diseñado por <a href="http://ceic.fceusb.org/">Centro de Estudiantes de Ingeniería de la Computación</a>. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <!-- end #footer -->
+        
+    </body>
+
+</html>

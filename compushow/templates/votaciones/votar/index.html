@@ -1,0 +1,69 @@
+{% extends "votaciones/base/index.html" %}
+
+{% block css %}
+<link href="/templates/votaciones/votar/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% endblock css %}
+
+{% block javascript %}
+<script type="text/javascript">
+    var categorias = [], categoria_ind = -1, nominaciones =[], media=[], AJAX_en_proceso = false;
+
+    $import("/templates/votaciones/votar/script.js");
+
+    function main() {
+        var categoria, nominacion;
+        //NOMINACIONES:
+        //{%for c in categorias%}
+            categoria = new Categoria("{{ c.nombre }}", "{{ c.descripcion }}");
+            categorias[+"{{c.pk}}"] = categoria;
+            //{%for n in nominaciones%}{%if n.categoria = c%}
+                nominacion = new Nominacion(+"{{n.pk}}","{{n.nominados}}".split(", "), "{{n.foto_id.imagen.url|default:'/templates/votaciones/media/sinAvatar.jpg'}}");
+                nominaciones[+"{{n.pk}}"] = nominacion;
+                categoria.nominaciones.push(nominacion);
+                //{%for v in n.videos%}
+                    media["{{v.pk}}"] = new Media("{{v.pk}}","{{v.link}}",true);
+                    nominacion.media.push(media["{{v.pk}}"]);
+                //{%endfor%}
+                //{%for f in n.fotos%}
+                    media["{{f.pk}}"] = new Media("{{f.pk}}","{{f.imagen.url}}",false);
+                    nominacion.media.push(media["{{f.pk}}"]);
+                //{%endfor%}
+            //{%endif%}{%endfor%}
+        //{%endfor%}
+
+        //VOTOS:
+        //{%for v in votos%}
+            cambiar_categoria_votado(+"{{v.nominacion.categoria.pk}}", true);
+            nominaciones[+"{{v.nominacion.pk}}"].votado = true;
+        //{%endfor%}
+    };
+</script>
+{% endblock %}
+
+
+{% block parametros_body %} onload="main()" {% endblock %}
+
+{% block contenido %}
+<h1 class="tituloExt">Etapa de Votaciones</h1>
+
+<div class="ayuda">
+    El Compushow se encuentra en la etapa de votaciones, en esta etapa puedes
+    votar por tus favoritos para que ganen en su respectivas categorías, revisa
+    por cada categoría todos los nominados y vota por tu preferido.
+    <div id="icono_ayuda"></div>
+</div>
+
+<div id="categorias" class="contenedor">
+    {%for c in categorias%}
+    <div id="categoria{{c.pk}}"class="categoria no_votado" onclick="cambiar_categoria(+'{{c.pk}}')">{{c.nombre}}</div>
+    {%endfor%}
+</div>
+
+<div id="cont_votacion" class="contenedor">
+    <div class="ayuda">
+        Selecciona una categoría de las que estan arriba para ver sus nominados.
+        <div id="icono_ayuda"></div>
+    </div>
+</div>
+
+{% endblock contenido %}

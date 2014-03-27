@@ -1,0 +1,93 @@
+{% extends "votaciones/base/index.html" %}
+
+{% block css %}
+<link href="/templates/votaciones/login/style.css" rel="stylesheet" type="text/css" media="screen" />
+{% endblock css %}
+
+{% block javascript %}
+<script type="text/javascript">
+    $import("/templates/votaciones/login/script.js");
+</script>
+{% endblock %}
+
+{% block parametros_body %}
+    {% if msg %}
+    onload="window.alert('{{msg}}');"
+    {% endif %}
+{% endblock %}  
+
+{% block user_area %}{% endblock %}
+
+{% block contenido %}
+
+<div id="contenedor_signup" class="contenedor">
+    <div id="signup">
+        <h1>Registrarse</h1>
+        <div class="ayuda">
+            Para registrarte debes ser estudiante, ayudante academico o profesor
+            de Ingeniería en Computación, si el sistema no te permite inscribirte
+            envia un puedes enviar un mail a 
+            <a href="mailto:ceic@ldc.usb.ve">ceic@ldc.usb.ve</a>
+            <div id="icono_ayuda"></div>
+        </div>
+        <form method="post" action="signup_do?next=" name="formulario" onkeyup="verificacion_registro()" >
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ next }}" />
+            
+            <label>
+                <strong>Carnet</strong>
+                <input type="text" spellcheck="false" autocomplete="off" name="username" id="username"/>
+                <div class="indicadorKo" id="carnet_ok"></div>
+            </label>
+            <div class="ayuda">
+            Tu contraseña es cifrada al llegar al servidor, sin embargo recomendamos
+            usar una contraseña distinta a tus otras contraseñas.
+            <div id="icono_ayuda"></div>
+            </div>
+            <label>
+                <strong>Contraseña</strong>
+                <input type="password" id="password0"/>
+            </label>
+
+            <label>
+                <strong>Confirmar contraseña</strong>
+                <input  type="password" name="password" id="password"/>
+                <div class="indicadorKo" id="pass_ok"></div>
+            </label>
+
+            <label>
+                <strong>Correo Electronico</strong>
+                <input type="text" spellcheck="false" name="Email" id="Email">
+                <div class="indicadorKo" id="correo_ok"></div>
+            </label>
+
+            <div id="boton_iniciar">
+                <input id="iniciar_btn" type="submit" value="Registrarse" disabled="true" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="contenedor_login" class="contenedor">
+    <div class="login">
+
+        <h1>Inicio de sesión</h1>
+
+        <form method="post" action="login_do" name="formulario">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ next }}" />
+            <label>
+                <strong>Carnet</strong>
+                <input type="text" name="username" autocomplete="off"/>
+                <label class="consejo">Ej: '12-34567'</label>
+            </label>
+            <label><strong>Contraseña</strong><input type="password" name="password"/> </label>
+            <div id="boton_iniciar">
+                <input id="iniciar_btn" type="submit" value="Iniciar sesión"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock contenido %}

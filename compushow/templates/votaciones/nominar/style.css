@@ -1,0 +1,88 @@
+#nominar {
+    width: 600px;
+    margin   : 0px auto;
+    display: block;
+}
+
+#mis_nominaciones {
+    display: table;
+    margin: 0px auto;
+    margin-top: 40px;
+}
+
+#lista_nominaciones {
+    display: table;
+}
+
+.nominado {
+    display         : inline-table;
+    background-color: rgba(0,0,0,0.7);
+    padding         : 5px;
+    border-radius   : 5px;
+    margin          : 5px;
+}
+
+.nombre_nominado {
+    display         : inline-table;
+    background-color: rgba(0,0,0,0.7);
+    padding         : 5px;
+    border-radius   : 5px;
+    margin: 0px 2px;
+    position: relative;
+    bottom: -10px;
+}
+
+.lista_nominados_cont {
+    padding-bottom : 10px;
+    display: table;
+}
+
+.nominacion {
+    display: block;
+}
+
+.cont_input_media {
+    background-color: rgba(0,0,0,0.7);
+    padding         : 5px;
+    margin          : 0px 2px;
+    border-radius   : 5px;
+    display         : inline-table;
+}
+
+.prev_img {
+    display: block;
+    margin: 0px auto;
+}
+
+.eliminar_nominacion {
+    background-color: darkred;
+    border-radius   : 5px;
+    padding: 2px 5px;
+    display: table;
+}
+
+.eliminar_nominacion:hover {
+    box-shadow      : inset 0px 0px 20px rgb(255,0,0), 0px 0px 20px rgb(255,0,0);
+    cursor: pointer;
+}
+
+#boton_agregar_foto, #boton_eliminar_foto, #boton_agregar_video, #boton_eliminar_video{
+    display: inline;
+}
+
+#boton_iniciar {
+    margin: 0px 240px;
+}
+
+.med_cont {
+    display         : inline-table;
+    background-color: rgba(0,0,0,0.7);
+    padding         : 5px;
+    border-radius   : 5px;
+}
+
+.med_cont:hover {
+    cursor: pointer;
+    box-shadow      : 0px 0px 20px rgb(255,255,255);
+    background-color: rgba(30,30,30,0.7);
+}
