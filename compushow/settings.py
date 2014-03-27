@@ -12,7 +12,8 @@ from os import path
 from datetime import date
 
 #ESTADO DEL SISTEMA:
-DEBUG = False
+DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 class Etapas:
@@ -26,15 +27,10 @@ class Etapas:
     VOTANDO   = 3
 
 # Indica en que etapa se encuentra el Compushow para el comportamiento de la pagina
-ETAPA = Etapas.VOTANDO
+ETAPA = Etapas.CERRADO
 
 # Dia en el que se realizara el compushow
 FECHA_DE_EVENTO = date(date.today().year, 3, 1)
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -90,7 +86,6 @@ USE_I18N = True
 USE_L10N = True
 
 PROJECT_ROOT = path.dirname(path.abspath(__file__))
-
 
 MEDIA_ROOT = PROJECT_ROOT + '/media/'
 MEDIA_URL = '/media/'
