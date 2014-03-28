@@ -97,7 +97,7 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_DIRS = (
-    ('site', PROJECT_ROOT+'/templates'),
+    #('site', PROJECT_ROOT+'/templates'),
 )
 
 STATICFILES_FINDERS = (
