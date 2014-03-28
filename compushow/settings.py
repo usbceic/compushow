@@ -61,7 +61,8 @@ ROOT_URLCONF = 'compushow.urls'
 WSGI_APPLICATION = 'compushow.wsgi.application'
 
 ADMINS = (
-    ('Oliver', 'oliver.a.perez.c@gmail.com'),
+    ('Rosangelis Garcia', 'rosangelis.92@gmail.com'),
+    ('Ivan Travecedo', 'ivantrave@gmail.com'),
 )
 
 DATABASES = {
