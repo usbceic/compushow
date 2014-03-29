@@ -129,7 +129,7 @@ def nominaciones(request):
     categorias = Categoria.objects.filter(edicion = Edicion.actual())
 
     #Votos del Usuario
-    votos        = VotoNominacion.objects.select_related('nominacion', 'nominacion__categoria','media').filter(user_id=request.user.pk)
+    votos        = VotoNominacion.objects.select_related('nominacion', 'nominacion__categoria','media').filter(user_id=request.user.pk).order_by('nominacion__categoria__nombre')
     fotos        = Foto.objects.select_related('media').filter(media__in=votos.values('media'))
     videos       = Video.objects.select_related('media').filter(media__in=votos.values('media'))
     #Nominados a las nominaciones

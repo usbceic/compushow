@@ -38,7 +38,7 @@
 }
 
 .nominacion {
-    display: block;
+    display: inline-block;
 }
 
 .cont_input_media {
