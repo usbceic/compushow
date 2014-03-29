@@ -3,6 +3,14 @@ from datetime  import *
 from django.db import IntegrityError
 from django.utils.safestring import mark_safe
 
+
+ETAPAS = (
+  ('0','CERRADO'),
+  ('1','NOMINANDO'),
+  ('2','FILTRANDO'),
+  ('3','VOTANDO'),
+)
+
 class Media(models.Model):
      def __unicode__(self):
         return str(self.pk)
@@ -44,8 +52,10 @@ class Video(models.Model):
 
 
 class Edicion(models.Model):
-    ano   = models.IntegerField(primary_key = True)
-    media = models.OneToOneField(Media)
+    ano    = models.IntegerField(primary_key = True)
+    media  = models.OneToOneField(Media)
+    activa = models.BooleanField()
+    etapa  = models.CharField(max_length=1,choices=ETAPAS)
 
     def save(self, *args, **kwargs):
         try:

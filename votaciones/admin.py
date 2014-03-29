@@ -31,8 +31,8 @@ class CategoriaInline(admin.TabularInline):
     extra = 0
 
 class EdicionAdmin(admin.ModelAdmin):
-    list_display = ('fecha',)
-    search_fields = ['ano']
+    list_display = ('fecha','etapa','activa',)
+    search_fields = ['ano','etapa','activa']
     inlines = [CategoriaInline]
 
     def fecha(self, edi):

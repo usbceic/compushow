@@ -63,24 +63,29 @@ Sistema de Compushow.
                         {% endblock menu %}
                     </div>
                     {% block user_area %}
-                    <div id="user_info_area" class="contenedor">
-                        {% if hay_usuario %}
-                            <h1>Usuario:</h1>
-                            <label>{{ usuario.get_full_name|default:usuario.username }}</label>
-                            <div class="boton"
-                                 onclick="window.location = 'logout_do?next={{direccion}}';"
-                                 >
-                                Salir
-                            </div>
-                        {% else %}
-                            <h1>Sin sesión:</h1>
-                            <div class="boton"
-                                 onclick="window.location = 'login?next={{direccion}}';"
-                                 >
-                                Iniciar Sesión
-                            </div>
-                        {% endif %}
-                    </div>
+                    <!--Si el sistema esta en nominaciones o votaciones muestra
+                        menu para inicio de sesion
+                    -->
+                    {% if estado == '1' or estado == '3'%} 
+                        <div id="user_info_area" class="contenedor">
+                            {% if hay_usuario %}
+                                <h1>Usuario:</h1>
+                                <label>{{ usuario.get_full_name|default:usuario.username }}</label>
+                                <div class="boton"
+                                     onclick="window.location = 'logout_do?next={{direccion}}';"
+                                     >
+                                    Salir
+                                </div>
+                            {% else %}
+                                <h1>Sin sesión:</h1>
+                                <div class="boton"
+                                     onclick="window.location = 'login?next={{direccion}}';"
+                                     >
+                                    Iniciar Sesión
+                                </div>                      
+                            {% endif %}
+                        </div>
+                    {% endif %}
                     {% endblock user_area %}
                 </div>
                 {% endblock header %}
@@ -103,7 +108,7 @@ Sistema de Compushow.
         <!-- Begin #footer -->
         <div id="contenedor_footer">
             <div id="footer">
-                <p>Diseñado por <a href="http://ceic.fceusb.org/">Centro de Estudiantes de Ingeniería de la Computación</a>. Todos los derechos reservados.</p>
+                <p>Diseñado por <a href="http://http://usbceic.ldc.usb.ve/">Centro de Estudiantes de Ingeniería de la Computación</a>. Todos los derechos reservados.</p>
             </div>
         </div>
         <!-- end #footer -->

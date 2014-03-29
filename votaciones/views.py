@@ -20,9 +20,11 @@ import string;
 
 def diccionario_base(diccionario, request):
     """ Informacion necesaria para el template base """
+    EdicionActual = Edicion.objects.get(activa = True)
     return dict(diccionario, **{'direccion'   : request.path,
                                 'hay_usuario' : request.user.is_authenticated(),
                                 'usuario'     : request.user,
+                                'estado'      : EdicionActual.etapa,
                                })
 
 def home(request):
@@ -81,7 +83,6 @@ def signup_do(request):
         user.save()
 
         login(request, authenticate(username=user.username, password=password))
-
         return redirect(request.POST['next'])
     except ObjectDoesNotExist:
         response = redirect(reverse('votaciones.views.pagina_login'))
@@ -98,6 +99,8 @@ def login_do(request):
     if user is not None:
         if user.is_active:
             login(request, user)
+            print "holaaaa"
+            print request.POST['next']
             return redirect(request.POST['next'])
 
     response = redirect(reverse('votaciones.views.pagina_login'))
@@ -315,18 +318,22 @@ def quitar_voto_do(request):
 
 
 
-@login_required(login_url='login')
+@login_required(login_url='login?next=login/')
 def votaciones(request):
-    if(ETAPA == Etapas.CERRADO):
-        return redirect('')
-    elif(ETAPA == Etapas.NOMINANDO):
+    EdicionActual = Edicion.objects.get(activa = True)
+
+    if(EdicionActual.etapa == '0'): #cerrado
+        return render_to_response('votaciones/cerrado/index.html',
+                                  diccionario_base({}, request),
+                                  context_instance=RequestContext(request),)
+    if(EdicionActual.etapa == '1'): #nominando
         return nominaciones(request)
-    elif(ETAPA == Etapas.VOTANDO):
-        return votar(request)
-    elif(ETAPA == Etapas.FILTRANDO):
+    if(EdicionActual.etapa == '2'): #filtrando
         return render_to_response('votaciones/filtrando/index.html',
                                   diccionario_base({}, request),
                                   context_instance=RequestContext(request),)
+    if(EdicionActual.etapa == '3'): #votando
+        return votar(request)
     else:
         raise Http404
 

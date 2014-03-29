@@ -7,22 +7,44 @@
 {% block parametros_body %}{% endblock %}  
 
 {% block contenido %}
-    <div id="left"
-         onclick="window.location = 'votaciones';"
-         >
-        <h1>Votaciones</h1>
-        <label>Debes haber iniciado sesion.</label>
-    </div>       
-    
-    <div id="center"
-         onclick="window.location = 'info';"
-         >
-        <h1>Información <br>del evento</h1>
-    </div>
-    
-    <div id="right"
-         onclick="window.location = 'construccion';"
-         >
-        <h1>Ediciones <br>anteriores</h1>
-    </div> 
+        {% if estado == '0' %}
+            <div id="left">
+                <h1>Votaciones <br> cerradas</h1>
+            </div>
+        {% elif estado == '1' %}
+            <div id="left"
+                 onclick="window.location = 'votaciones';"
+                 >
+                <h1>Nominaciones</h1>
+                <label>Debes haber iniciado sesion</label>
+            </div>
+        {% elif estado == '2' %}
+            <!--<div id="left">
+                <h1>Nominaciones cerradas</h1>
+            </div>-->
+            <div id="left"
+                 onclick="window.location = 'votaciones';"
+                 >
+                <h1>Filtrando <br> nominaciones</h1>
+            </div>
+        {% else %}
+            <div id="left"
+                 onclick="window.location = 'votaciones';"
+                 >
+                <h1>Votaciones</h1>
+                <label>Debes haber iniciado sesion</label>
+            </div>
+        {% endif %}
+        
+        <div id="center"
+             onclick="window.location = 'info';"
+             >
+            <h1>Información <br>del evento</h1>
+        </div>
+        
+        <div id="right"
+             onclick="window.location = 'construccion';"
+             >
+            <h1>Ediciones <br>anteriores</h1>
+        </div>
 {% endblock contenido %}
