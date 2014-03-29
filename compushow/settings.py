@@ -27,7 +27,7 @@ class Etapas:
     VOTANDO   = 3
 
 # Indica en que etapa se encuentra el Compushow para el comportamiento de la pagina
-ETAPA = Etapas.CERRADO
+ETAPA = Etapas.NOMINANDO
 
 # Dia en el que se realizara el compushow
 FECHA_DE_EVENTO = date(date.today().year, 3, 1)
@@ -61,7 +61,8 @@ ROOT_URLCONF = 'compushow.urls'
 WSGI_APPLICATION = 'compushow.wsgi.application'
 
 ADMINS = (
-    ('Oliver', 'oliver.a.perez.c@gmail.com'),
+    ('Rosangelis Garcia', 'rosangelis.92@gmail.com'), 
+    ('Ivan Travecedo', 'ivantrave@gmail.com'),
 )
 
 DATABASES = {
@@ -69,9 +70,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'compushow',                      
         'USER': 'postgres',                      
-        'PASSWORD': '123456',                  
-        'HOST': '',                     
-        'PORT': '',                      
+        'PASSWORD': 'postgres',                  
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -96,7 +97,7 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_DIRS = (
-    ('site', PROJECT_ROOT+'/templates'),
+    #('site', PROJECT_ROOT+'/templates'),
 )
 
 STATICFILES_FINDERS = (
