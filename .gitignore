@@ -1,0 +1,7 @@
+# Archivos de configuracion #
+#############################
+compushow/settings.py
+
+# Compiled source #
+###################
+*.pyc
