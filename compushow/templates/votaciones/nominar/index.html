@@ -8,7 +8,7 @@
 <script type="text/javascript">
     var categorias = [],
         nominados  = 0,
-        fotos      = 0,
+        fotos      = 1,
         videos     = 0;
 
     $import("/templates/votaciones/nominar/script.js");
@@ -41,7 +41,11 @@
 
 <div id="nominar" class="contenedor">
     <h1>Nominar</h1>
-    <form id="form_nominar" enctype="multipart/form-data" method="post" action="nominar_do" onsubmit="return nominar()">
+    <form id="form_nominar"
+          enctype="multipart/form-data" 
+          method="post" 
+          action="nominar_do"
+          onsubmit="return nominar()">
         {% csrf_token %}
         <div id="contenedor_categoria">
             
@@ -74,22 +78,31 @@
             Puedes subir fotos sobre la nomnacion para que los demas las vean. (MAX 1.5 MB)
             <div id="icono_ayuda"></div>
         </div>
+
+        <!--<div id="lista_fotos">
+        </div>-->
+
         <div id="lista_fotos">
+            <div id="foto0" class="cont_input_media">
+                <input name="foto0" id="input_foto0" type="file" accept="image/*" onchange="habilitarNominarFoto()">
+            </div>
         </div>
+
+
         <div id="boton_agregar_foto" class="boton" onclick="agregar_foto()">Agregar Foto</div>
         <div id="boton_eliminar_foto" class="boton" onclick="eliminar_foto()">Eliminar Foto</div>
 
-        <div class="ayuda">
+        <!--<div class="ayuda">
             Puedes pegar links de Youtube con videos para la nominacion.
             <div id="icono_ayuda"></div>
         </div>
         <div id="lista_videos">
         </div>
         <div id="boton_agregar_video" class="boton" onclick="agregar_video()">Agregar Video</div>
-        <div id="boton_eliminar_video" class="boton" onclick="eliminar_video()">Eliminar Video</div>
+        <div id="boton_eliminar_video" class="boton" onclick="eliminar_video()">Eliminar Video</div>-->
 
         <div id="boton_iniciar">
-            <input id="iniciar_btn" type="submit" value="Hacer Nominacion"/>
+            <input id="iniciar_btn" type="submit" value="Nominar" disabled="true"/>
         </div>
     </form>
 </div>
@@ -151,5 +164,4 @@
         {% endfor %}
     </div>
 </div>
-
 {% endblock contenido %}

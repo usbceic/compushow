@@ -44,6 +44,7 @@ function cambio_de_categoria() {
 
     while(nominados > categoria.maximo) borrar_nominado();
     while(nominados < categoria.minimo) agregar_nominado();
+    //agregar_foto();
 }
 
 function agregar_nominado() {
@@ -111,6 +112,24 @@ function actualizar_boton_eliminar_foto() {
     else $("boton_eliminar_foto").hide();
 }
 
+function validar_foto(campo) {
+    var foto_regexp = new RegExp(/\.(jpg|gif|jpeg|png)$/);
+    var valido = foto_regexp.test(campo.value);
+    if (valido){
+        return true;
+    }
+    else {
+        alert("Solo puedes subir fotos");
+        return false;
+    }
+}
+
+function habilitarNominarFoto(){
+    var nombreFoto = validar_foto($("input_foto0"));
+    if (nombreFoto) $("iniciar_btn").disabled = false;
+    else $("iniciar_btn").disabled = true;
+}
+
 function agregar_foto() {
     var id            = "foto"+fotos,
         input         = new Element("INPUT", {"name":id, "id":"input_"+id, "type":"file", "accept":"image/*"}),
@@ -123,6 +142,7 @@ function agregar_foto() {
     fotos++;
 
     actualizar_boton_eliminar_foto();
+    //validateForm();
 }
 
 function eliminar_foto() {

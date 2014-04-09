@@ -184,6 +184,10 @@ def nominar_do(request):
     #Lista de nominaciones en la categoria
     nominaciones = Nominacion.objects.select_related('nominado_set').filter(categoria=categoria)
 
+    #Si no hay fotos asociadas a la nominacion, no se permite
+    if len(request.FILES)==0:
+        return redirect('/votaciones')
+
     nominacion = None;
 
     #Construyendo lista de nominados
