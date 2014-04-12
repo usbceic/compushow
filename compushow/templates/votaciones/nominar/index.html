@@ -2,9 +2,11 @@
 
 {% block css %}
 <link href="/templates/votaciones/nominar/style.css" rel="stylesheet" type="text/css" media="screen" />
+
 {% endblock css %}
 
 {% block javascript %}
+
 <script type="text/javascript">
     var categorias = [],
         nominados  = 0,
@@ -31,6 +33,7 @@
 
 {% block contenido %}
 <h1 class="tituloExt">Etapa de Nominaciones</h1>
+<input id="tags" type="text">
 
 <div class="ayuda">
     El Compushow se encuentra en la etapa de nominaciones, en esta etapa puedes

@@ -44,7 +44,6 @@ function cambio_de_categoria() {
 
     while(nominados > categoria.maximo) borrar_nominado();
     while(nominados < categoria.minimo) agregar_nominado();
-    //agregar_foto();
 }
 
 function agregar_nominado() {

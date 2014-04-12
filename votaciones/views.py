@@ -264,7 +264,7 @@ def consultar_nombre(request):
     if(resultados.exists()):
         respuesta  = resultados[0].nombre
     
-    return HttpResponse(respuesta, mimetype='text/plain')
+    return HttpResponse(respuesta, content_type='text/plain')
 
 
 
