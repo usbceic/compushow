@@ -44,6 +44,7 @@ function cambio_de_categoria() {
 
     while(nominados > categoria.maximo) borrar_nominado();
     while(nominados < categoria.minimo) agregar_nominado();
+    actualizar_boton_agregar_nominado();
 }
 
 function agregar_nominado() {
@@ -51,6 +52,11 @@ function agregar_nominado() {
     
     if(categoria.maximo > nominados) {
         var id             = "nominado"+nominados,
+
+        table          = new Element("TABLE",{"style":"width:100%"}),
+        fila           = new Element("TR"),
+        col1           = new Element("TD"),
+        col2           = new Element("TD"),
         input          = new Element("INPUT", {
             "spellcheck":"false",
             "name":id,
@@ -62,23 +68,32 @@ function agregar_nominado() {
             "class":"autoCompletado"
         }),
         nuevo_nominado = new Element("LABEL"),
+        nuevo_nominado2 = new Element("LABEL"),
         nominado_cont  = new Element("DIV"  , {
             "id":id,
             "class":"nominado"
         });
                             
-        nuevo_nominado
+        /*nuevo_nominado
         .insert(new Element("STRONG").update("Nominar a:"))
         .insert(autoComp)
         .insert(input);
 
-        nominado_cont.insert(nuevo_nominado);
+        nominado_cont.insert(nuevo_nominado);*/
         
         //nuevo_nominado.insert(new Element("DIV", {'class' : "divBorrar", "onclick":"borrar_nominado_n("+nominados+")"}));
+
+        col1.insert(nuevo_nominado.insert(input));
+        col2.insert(nuevo_nominado2.insert(new Element("STRONG").update("Nominar a:")).insert(autoComp));
+        table.insert(fila.insert(col1).insert(col2));
+
+        nominado_cont.insert(table);
+
         $("lista_nominados").insert(nominado_cont);
         
         nominados++;
     }
+
     actualizar_boton_agregar_nominado();
 }
 

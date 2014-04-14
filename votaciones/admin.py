@@ -46,8 +46,8 @@ admin.site.register(Edicion, EdicionAdmin)
 #Categoria:
 
 class CategoriaAdmin(admin.ModelAdmin):
-    search_fields = ['nombre', 'edicion', 'ganador']
-    list_display = ('nombre', 'edicion', 'ganador')
+    search_fields = ['nombre', 'edicion','maximo_nominados','minimo_nominados','ganador']
+    list_display = ('nombre', 'edicion','maximo_nominados','minimo_nominados','ganador')
     list_filter  = ['edicion']
 
 admin.site.register(Categoria, CategoriaAdmin)
