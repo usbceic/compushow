@@ -113,11 +113,18 @@ function consultar_nombre(numero) {
         new Ajax.Updater(elm_nombre, "/consultar_nombre", {
             method: 'get',
             parameters: {
-                "busqueda":$("input_nominado"+numero).value
+                "busqueda":$("input_nominado"+numero).value,
+                "estudiante":true
             }
         });
     } else {
-        $(elm_nombre).value = $("input_nominado"+numero).value;
+        new Ajax.Updater(elm_nombre, "/consultar_nombre", {
+            method: 'get',
+            parameters: {
+                "busqueda":$("input_nominado"+numero).value,
+                "estudiante":false
+            }
+        });
     }
 }
 

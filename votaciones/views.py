@@ -255,9 +255,15 @@ def nominar_do(request):
 def consultar_nombre(request):
     respuesta = ""
     busqueda = request.GET['busqueda']
+    es_estudiante = request.GET['estudiante']
 
     busquedas = busqueda.split(' ')
-    resultados = Carnet.objects.all()
+    print "Es estudianteeeee"
+    print es_estudiante
+    if es_estudiante == 'true':
+        resultados = Carnet.objects.all().filter(es_estudiante=True)
+    elif es_estudiante == 'false':
+        resultados = Carnet.objects.all().filter(es_estudiante=False)
     for b in busquedas:
         resultados = resultados.filter(nombre__icontains=b)
 
@@ -265,7 +271,6 @@ def consultar_nombre(request):
         respuesta  = resultados[0].nombre
     
     return HttpResponse(respuesta, content_type='text/plain')
-
 
 
 def votar(request):

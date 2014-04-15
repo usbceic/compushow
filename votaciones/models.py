@@ -165,9 +165,10 @@ class VotoFinal(Voto):
         ordering = ['fecha', 'nominacion']
 
 class Carnet(models.Model):
-    numero = models.CharField(max_length = 8 , primary_key = True)
-    nombre = models.CharField(max_length = 64)
-    usado  = models.BooleanField()
+    numero        = models.CharField(max_length = 12 , primary_key = True)
+    nombre        = models.CharField(max_length = 64)
+    usado         = models.BooleanField()
+    es_estudiante = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['numero', 'usado']

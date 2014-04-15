@@ -35,7 +35,9 @@
             <input name="next" type="hidden" value="{{ next }}" />
             
             <label>
-                <strong>Carnet</strong>
+                <strong>Estudiante pregrado</strong>
+                <input type="checkbox" id="es_estudiante" name="es_estudiante" onchange="cambiarTipo()">
+                <strong id="tipo_usuario" name="tipo_usuario">Usuario</strong>
                 <input type="text" spellcheck="false" autocomplete="off" name="username" id="username"/>
                 <div class="indicadorKo" id="carnet_ok"></div>
             </label>
