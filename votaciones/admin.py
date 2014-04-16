@@ -117,8 +117,8 @@ admin.site.register(VotoFinal, VotoFinalAdmin)
 
 class CarnetAdmin(admin.ModelAdmin):
     search_fields = ['nombre', 'numero','else']
-    list_display = ('nombre', 'numero', 'usado','es_estudiante')
-    list_filter  = ['usado','es_estudiante']
+    list_display = ('nombre', 'numero', 'usado','tipo_carnet')
+    list_filter  = ['usado','tipo_carnet']
 
 admin.site.register(Carnet, CarnetAdmin)
 

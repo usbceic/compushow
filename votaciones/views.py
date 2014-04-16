@@ -255,15 +255,14 @@ def nominar_do(request):
 def consultar_nombre(request):
     respuesta = ""
     busqueda = request.GET['busqueda']
-    es_estudiante = request.GET['estudiante']
+    tipo_carnet = request.GET['tipo']
 
     busquedas = busqueda.split(' ')
-    print "Es estudianteeeee"
-    print es_estudiante
-    if es_estudiante == 'true':
-        resultados = Carnet.objects.all().filter(es_estudiante=True)
-    elif es_estudiante == 'false':
-        resultados = Carnet.objects.all().filter(es_estudiante=False)
+    print "Tipo de nombre a consultar"
+    print tipo_carnet
+
+    resultados = Carnet.objects.all().filter(tipo_carnet=tipo_carnet)
+
     for b in busquedas:
         resultados = resultados.filter(nombre__icontains=b)
 
@@ -447,3 +446,10 @@ def limpiar_media(request):
         return redirect('/admin')
     else:
         raise Http404
+
+
+def adminAdmin(request):
+    return render_to_response('votaciones/adminFalso/index.html',
+                                diccionario_base({}, request),
+                                context_instance=RequestContext(request),
+                              )

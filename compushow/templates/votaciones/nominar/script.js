@@ -11,7 +11,7 @@ var Categoria = Class.create({
      * @param {Compra} compra Referencia a el objeto compra relacionado.
      */
     initialize : function(/**Strin*/ nombre, /**Strin*/ descripcion,
-        /**Int*/ maximo, /**Int*/ minimo, /**Boolean*/ computistas) {
+        /**Int*/ maximo, /**Int*/ minimo, /**Char*/ computistas) {
         
         this.nombre      = nombre;
         this.descripcion = descripcion;
@@ -109,7 +109,7 @@ function consultar_nombre(numero) {
     var categoria = categoria_actual(),
     elm_nombre = "complNominado"+numero;
 
-    if(categoria.computistas) {
+    /*if(categoria.computistas=='0') {
         new Ajax.Updater(elm_nombre, "/consultar_nombre", {
             method: 'get',
             parameters: {
@@ -117,12 +117,26 @@ function consultar_nombre(numero) {
                 "estudiante":true
             }
         });
-    } else {
+    }
+    else if (categoria.computistas=='1') {
         new Ajax.Updater(elm_nombre, "/consultar_nombre", {
             method: 'get',
             parameters: {
                 "busqueda":$("input_nominado"+numero).value,
                 "estudiante":false
+            }
+        });
+    }*/
+
+    if(categoria.computistas=='3') {
+        $(elm_nombre).value = $("input_nominado"+numero).value;
+    }
+    else{
+        new Ajax.Updater(elm_nombre, "/consultar_nombre", {
+            method: 'get',
+            parameters: {
+                "busqueda":$("input_nominado"+numero).value,
+                "tipo":categoria.computistas
             }
         });
     }
@@ -241,7 +255,7 @@ function nominar() {
 
     for(i = 0; i < nominados; i++) {
         input = $("input_nominado"+i);
-        if(categoria.computistas) {
+        if(categoria.computistas=='0' || categoria.computistas=='1' || categoria.computistas=='2') {
             input.value = $("complNominado"+i).innerHTML;
         }
         if(input.value==null || input.value.trim() == "") {

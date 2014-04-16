@@ -18,7 +18,7 @@
     function main() {
         // {%for c in categorias%}
         categorias["{{c.pk}}"] = new Categoria("{{ c.nombre }}", "{{ c.descripcion }}",
-            +"{{ c.maximo_nominados }}", +"{{ c.minimo_nominados }}", "True"==="{{c.solo_computistas}}");
+            +"{{ c.maximo_nominados }}", +"{{ c.minimo_nominados }}", "{{c.tipo_categoria}}");
         // {%endfor%}
         
         cambio_de_categoria();

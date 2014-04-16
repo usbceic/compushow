@@ -11,6 +11,14 @@ ETAPAS = (
   ('3','VOTANDO'),
 )
 
+TIPO_CATEGORIA = (
+  ('0','COMPUTISTA'),
+  ('1','PROFESOR'),
+  ('2','AGRUPACION'),
+  ('3','OTRO'),
+)
+
+
 class Media(models.Model):
      def __unicode__(self):
         return str(self.pk)
@@ -63,9 +71,9 @@ class Edicion(models.Model):
         except IntegrityError:
             media = Media()
             media.save()
-            self.media = media
+            self.media = mediaVotoFinal
             super(Edicion, self).save()
-        
+
 
     def __unicode__(self):
         return str(self.ano)
@@ -113,7 +121,7 @@ class Categoria(models.Model):
     descripcion      = models.CharField(max_length=128)
     maximo_nominados = models.IntegerField()
     minimo_nominados = models.IntegerField()
-    solo_computistas = models.BooleanField()
+    tipo_categoria = models.CharField(max_length=1,choices=TIPO_CATEGORIA)
 
     def __unicode__(self):
         return self.nombre+' '+str(self.edicion)
@@ -168,7 +176,8 @@ class Carnet(models.Model):
     numero        = models.CharField(max_length = 12 , primary_key = True)
     nombre        = models.CharField(max_length = 64)
     usado         = models.BooleanField()
-    es_estudiante = models.BooleanField(default=True)
+    tipo_carnet   = models.CharField(max_length=1, default='0',choices=TIPO_CATEGORIA)
+    #es_estudiante = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['numero', 'usado']

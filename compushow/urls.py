@@ -25,7 +25,8 @@ urlpatterns = patterns('',
     url(r'^construccion$', 'votaciones.views.construccion'),
 
     #url del admin
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/$', 'votaciones.views.adminAdmin'),
+    url(r'^adminJocoza/', include(admin.site.urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()
