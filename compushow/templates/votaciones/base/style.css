@@ -3,7 +3,7 @@
 body {
     background-color: black;
     color: white;
-    background-image: url("/templates/votaciones/media/fondo_bokeh.jpg");
+    background-image: url("/templates/votaciones/media/fondo.jpg");
     background-attachment: fixed;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@ body {
 }
 
 #footer {
-    height: 40px;
+    height: 80px;
     padding-top: 1px;
     width : 1000px;
     margin: 10px auto;
@@ -86,7 +86,7 @@ a:visited {color:#ffffff;}  /* visited link */
 }
 
 #user_info_area label {
-    font-size  : 16px;
+    font-size  : 14px;
     font-weight: bold;
     line-height: 0px;
     margin-left: 10px;
@@ -116,7 +116,7 @@ form label .indicadorOk {
 
 form label .indicadorKo {
     width: 24px; height: 24px;
-    display      : inline-block;
+    display: inline-block;
     margin-bottom: -5px;
 
     /*border-radius: 100%;
@@ -165,7 +165,7 @@ form label .indicadorKo {
     position : relative;
     top      : -10px;
     left     : -40px;
-    font-size: 20px;
+    font-size: 18px;
 
     padding  : 5px;
     display  :table;

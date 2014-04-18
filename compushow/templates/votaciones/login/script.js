@@ -42,10 +42,10 @@ function cambiarTipo(){
     estudiante = document.getElementById("es_estudiante");
     tipo_usuario = document.getElementById("tipo_usuario");
     if(estudiante.checked === true){
-        tipo_usuario.update("Carnet");
+        tipo_usuario.update("Carnet: ");
     }
     else{
-        tipo_usuario.update("Usuario");
+        tipo_usuario.update("Usuario: ");
     }
     verificacion_registro();
 

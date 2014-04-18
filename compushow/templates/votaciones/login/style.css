@@ -11,18 +11,14 @@
     display: inline;
 }
 
+#contenedor_signup #boton_checkbox input {
+    width: auto;
+}
+
 #contenedor_login {
     width      : 250px;
-    margin     : 20px 0px;
+    margin     : 20px 60px;
     float      : right;
-}
-
-#contenedor_login #boton_iniciar{
-    float:right;
-}
-
-#contenedor_signup #boton_iniciar {
-    float:left;
 }
 
 #contenedor_signup #boton_iniciar input {

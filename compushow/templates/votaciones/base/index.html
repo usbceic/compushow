@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<!--
-Sistema de Compushow.
+<!-- Sistema de Compushow -->
 
-
--->
 <html>
     <head>
         <title>{% block titulo %}Compushow {% now "Y"%}{% endblock %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <link rel='shortcut icon' type='image/x-icon' href='/templates/images/favicon.ico' />
         <link href="/templates/votaciones/base/style.css" rel="stylesheet" type="text/css" media="screen" />
         {% block css %}{% endblock %}
         
         <script type="text/javascript" src="/templates/prototype.js"></script>
-
-        <script type="text/javascript" src="/templates/votaciones/base/script.js"></script>
-        
+        <script type="text/javascript" src="/templates/votaciones/base/script.js"></script>        
         <script type="text/javascript">
             /**
              * @function $import(path)
@@ -37,24 +32,24 @@ Sistema de Compushow.
                 return true;
                 
             }
-        </script>
-        
+        </script>        
         {% block javascript %}{% endblock %}
     </head>
     
+
     <body {% block parametros_body %}{% endblock %}>
-        <div id="wrapper">
-            
+        <div id="wrapper">            
             <!-- Begin #header -->
             <div id="contenedor_header">
                 {% block header %}
                 <div id="header">
                     <div id="logo" onclick="window.location = '/';">
                         <div id="logo_carrera">
-                            <img src="/templates/votaciones/media/LogoOficial.png" alt="logo" width="98" height="100">
+                            <img src="/templates/votaciones/media/LogoOficial.png" alt="logo" width="138"/>
                         </div>
                         <div id="titulo">
-                            <h1>Compushow {% now "Y"%}</h1>
+                            <br></br>
+                            <h1>COMPUSHOW {% now "Y"%}</h1>
                             <label>Ingeniería de la Computación</label>
                         </div>
                     </div>
@@ -77,11 +72,11 @@ Sistema de Compushow.
                                     Salir
                                 </div>
                             {% else %}
-                                <h1>Sin sesión:</h1>
+                                <h1>No ha iniciado sesión</h1>
                                 <div class="boton"
                                      onclick="window.location = 'login?next={{direccion}}';"
                                      >
-                                    Iniciar Sesión
+                                    Iniciar Sesión/ Registrarse
                                 </div>                      
                             {% endif %}
                         </div>
@@ -100,15 +95,27 @@ Sistema de Compushow.
                 {% endblock contenido %}
             </div>
             <!-- end #page -->
-            
-            
-        </div>
-        
+
+        </div>        
         
         <!-- Begin #footer -->
         <div id="contenedor_footer">
             <div id="footer">
-                <p>Diseñado por <a href="http://http://usbceic.ldc.usb.ve/">Centro de Estudiantes de Ingeniería de la Computación</a>. Todos los derechos reservados.</p>
+                <!--Redes sociales-->
+                <p>
+                    <center><a target="_blank" href="usbceic.ldc.usb.ve/" class="normaltip">
+                        <img src="/templates/votaciones/media/icon5.png" title="Pagina Web" alt=""/></a>&nbsp;
+                    <a target="_blank" href="https://www.facebook.com/groups/28228703993/" class="normaltip">
+                        <img src="/templates/votaciones/media/icon1.png" title="Grupo en Facebook" alt=""/></a>&nbsp;
+                    <a target="_blank" href="https://twitter.com/usbceic" class="normaltip">
+                        <img src="/templates/votaciones/media/icon2.png" title="Twitter" alt=""/></a>&nbsp;
+                    <a target="_blank" href="http://instagram.com/usbceic" class="normaltip">
+                        <img src="/templates/votaciones/media/icon3.png" alt="" title="Instagram"/></a>&nbsp;
+                    <a href="mailto:usbceic@gmail.com" class="normaltip">
+                        <img src="/templates/votaciones/media/icon4.png" title="usbceic@gmail.com" alt=""/></a></center>
+
+                    Centro de Estudiantes de Ingeniería de la Computación &copy; 2014
+                </p>
             </div>
         </div>
         <!-- end #footer -->

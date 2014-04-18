@@ -32,76 +32,74 @@
 {% block parametros_body %} onload="main()" {% endblock %}
 
 {% block contenido %}
-<h1 class="tituloExt">Etapa de Nominaciones</h1>
+
+<center><h1 class="tituloExt">ETAPA DE NOMINACIONES</h1></center>
 
 <div class="ayuda">
-    El Compushow se encuentra en la etapa de nominaciones, en esta etapa puedes
-    nominar a tus preferidos para cada Cateogoría, las nominaciones más
-    solicitadas pasarán a la etapa de votaciones.
-    <div id="icono_ayuda"></div>
+    <center>El Compushow se encuentra en la etapa de nominaciones, ahora podrás nominar a tus preferidos para cada categoría.
+    <br>Las nominaciones más solicitadas pasarán a la etapa de votaciones.</center>
 </div>
+
 
 <div id="nominar" class="contenedor">
     <h1>Nominar</h1>
-    <form id="form_nominar"
-          enctype="multipart/form-data" 
-          method="post" 
-          action="nominar_do"
-          onsubmit="return nominar()">
+    <form id="form_nominar" enctype="multipart/form-data" method="post" action="nominar_do" onsubmit="return nominar()">
         {% csrf_token %}
+
         <div id="contenedor_categoria">
-            
-            <label>
-                <strong>Categoría</strong>
-                <select name="categoria" id="categoria" onchange="cambio_de_categoria()">
-                    {%for c in categorias%}
-                    <option value="{{c.pk}}">{{c.nombre}}</option>
-                    {%endfor%}
-                </select>
-            </label>
-
-            <div class="ayuda">
-                <label id="descripcion_categoria"></label>
-                <div id="icono_ayuda"></div>
-            </div>
-
+            <table>
+                <tr>
+                    <td><strong>Categoría: </strong></td>
+                    <td>
+                        <select name="categoria" id="categoria" onchange="cambio_de_categoria()">
+                            {%for c in categorias%}
+                                <option value="{{c.pk}}">{{c.nombre}}</option>
+                            {%endfor%}
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <p></p>
+            <table>
+                <tr>
+                    <td><strong>Descripción: </strong></td>
+                    <td> </td>
+                    <td><label id="descripcion_categoria"></label></td>
+                </tr>
+            </table>
+            <p></p>
+            <table>
+                <tr>
+                    <td><strong>Nominar: </strong></td>
+                    <td> </td>
+                    <td><div id="lista_nominados"></div></td>
+                </tr>
+            </table>
         </div>
 
-        <div id="nominados">
-            <div id="lista_nominados">
-            </div>
-            <div class="boton" id="boton_agregar_nominado"
-                 onclick="agregar_nominado()">Agregar Nominado</div>
-            </div>
-        
-        <h1>Media</h1>
+        <center><div class="boton" id="boton_agregar_nominado" onclick="agregar_nominado()">Agregar otro nominado</div></center>
+                   
+        <p></p>
 
-        <div class="ayuda">
-            Puedes subir fotos sobre la nomnacion para que los demas las vean. (MAX 1.5 MB)
-            <div id="icono_ayuda"></div>
-        </div>
+        <table>
+            <tr>
+                <td><strong>Foto: </strong></td>
+                <td>
+                    <div id="lista_fotos">
+                        <div id="foto0" class="cont_input_media">
+                            <input name="foto0" id="input_foto0" type="file" accept="image/*" onchange="habilitarNominarFoto()">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table> 
 
-        <!--<div id="lista_fotos">
-        </div>-->
+        <div class="ayuda">Tamaño máximo de 1.5 MB</div>
+       
+        <center><div id="boton_agregar_foto" class="boton" onclick="agregar_foto()">Agregar Foto</div> 
+        <div id="boton_eliminar_foto" class="boton" onclick="eliminar_foto()">Eliminar Foto</div></center>
 
-        <div id="lista_fotos">
-            <div id="foto0" class="cont_input_media">
-                <input name="foto0" id="input_foto0" type="file" accept="image/*" onchange="habilitarNominarFoto()">
-            </div>
-        </div>
-
-
-        <div id="boton_agregar_foto" class="boton" onclick="agregar_foto()">Agregar Foto</div>
-        <div id="boton_eliminar_foto" class="boton" onclick="eliminar_foto()">Eliminar Foto</div>
-
-        <!--<div class="ayuda">
-            Puedes pegar links de Youtube con videos para la nominacion.
-            <div id="icono_ayuda"></div>
-        </div>
-        <div id="lista_videos">
-        </div>
-        <div id="boton_agregar_video" class="boton" onclick="agregar_video()">Agregar Video</div>
-        <div id="boton_eliminar_video" class="boton" onclick="eliminar_video()">Eliminar Video</div>-->
+        <p></p>
 
         <div id="boton_iniciar">
             <input id="iniciar_btn" type="submit" value="Nominar" disabled="true"/>
@@ -113,57 +111,59 @@
     <h1>Mis Nominaciones</h1>
 
     <div class="ayuda">
-        Aqui aparecen las nominaciones que has hecho, si estas arrepentid@ de
-        alguna nominacion puedes borrarla.
-        <div id="icono_ayuda"></div>
+        <center>A continuación aparecen las nominaciones que has realizado, si te arrepientes de alguna, la puedes borrar.</center>
     </div>
 
 
     <div id="lista_nominaciones">
         {% for voto in votos %}
         <div class="nominacion contenedor" id="nominacion{{voto.pk}}">
-            <h1>{{voto.nominacion.categoria.nombre}}</h1>
-            <label><strong>Fecha:</strong> {{voto.fecha|date:"D d M"}}</label><br>
-            <div class="lista_nominados_cont">
-            <strong>Nominado/s:</strong>
-            {% for nominado in nominados%}
-                {% if nominado.nominacion == voto.nominacion %}
-                <div class="nombre_nominado">
-                {{nominado.nombre}}
-                </div>
-                {% endif %}
-            {% endfor %}
-            </div>
+            <table>
+                <tr>
+                    <td><strong>Categoría: </strong></td>
+                    <td>{{voto.nominacion.categoria.nombre}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Fecha: </strong></td>
+                    <td>{{voto.fecha|date:"D d-M"}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Nominado: </strong></td>
+                    <td>
+                        {% for nominado in nominados%}
+                            {% if nominado.nominacion == voto.nominacion %}
+                                {{nominado.nombre}}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Foto(s): </strong></td>
+                    <td>
+                        <div id="cont_fotos">
+                            {% for foto in fotos %}
+                                {% if foto.media == voto.media %}
+                                <div class="med_cont" onclick="window.location='{{foto.imagen.url}}';">
+                                    <img src="{{foto.imagen.url}}" alt="Imagen{{foto.pk}}" width="64px"/>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
 
-            <strong>Fotos:</strong>
-            <div id="cont_fotos">
-                {% for foto in fotos %}
-                    {% if foto.media == voto.media %}
-                    <div class="med_cont" onclick="window.location='{{foto.imagen.url}}';">
-                        <img src="{{foto.imagen.url}}" alt="Imagen{{foto.pk}}" width="64px"/>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+            </table>
 
-            <strong>Videos:</strong>
-            <div id="cont_videos">
-                {% for video in videos %}
-                    {% if video.media == voto.media %}
-                    <div class="med_cont" onclick="window.location='http://www.youtube.com/watch?v={{video.link}}';">
-                        <img src="http://img.youtube.com/vi/{{video.link}}/2.jpg" alt="http://www.youtube.com/watch?v={{video.link}}" width="64px"/>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div class="eliminar_nominacion"
-                 onclick="eliminar_voto({{voto.pk}})"
-                 >Eliminar Nominacion</div>
+            <p></p>
+            <center>
+                <div class="eliminar_nominacion" onclick="eliminar_voto({{voto.pk}})">Eliminar nominación</div>
+            </center>
         </div>
+
         {% empty %}
-        <h1>No tienes nominaciones</h1>
+            No tienes nominaciones.
         {% endfor %}
+
     </div>
 </div>
 {% endblock contenido %}
