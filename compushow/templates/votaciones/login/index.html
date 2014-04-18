@@ -20,6 +20,8 @@
 
 {% block contenido %}
 
+
+{% if estado == '1' or estado == '3'%}
 <div id="contenedor_signup" class="contenedor">
     <div id="signup">
         <h1>Registrarse</h1>
@@ -76,20 +78,30 @@
 
         <h1>Inicio de sesión</h1>
 
-        <form method="post" action="login_do" name="formulario">
+        <form method="post" action="login_do" name="formulario" onkeyup="verificacion_login()">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ next }}" />
             <label>
                 <strong>Carnet / Usuario</strong>
-                <input type="text" name="username" autocomplete="off"/>
+                <input type="text" name="username" autocomplete="off" id="usernameL"/>
                 <label class="consejo">Ej: '12-34567'</label>
             </label>
-            <label><strong>Contraseña</strong><input type="password" name="password"/> </label>
+            <label><strong>Contraseña</strong><input type="password" name="password" id="passwordL"/> </label>
             <div id="boton_iniciar">
-                <input id="iniciar_btn" type="submit" value="Iniciar sesión"/>
+                <input id="iniciar_btnLog" type="submit" value="Iniciar sesión"  disabled="true"/>
             </div>
         </form>
     </div>
 </div>
+
+{% else %}
+        <div class="ayuda">
+            <center>
+                Las votaciones o nominaciones se encuentran cerradas
+            </center>
+            <div id="icono_ayuda"></div>
+        </div>
+{% endif %}
+
 
 {% endblock contenido %}

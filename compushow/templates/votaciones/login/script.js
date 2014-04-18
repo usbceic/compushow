@@ -38,6 +38,15 @@ function verificacion_registro() {
     $("iniciar_btn").disabled = !(carnet_bool&&correo_bool&&password_bool);
 }
 
+function verificacion_login() {
+    if($("usernameL").value.length> 0 && $("passwordL").value.length>0){
+        $("iniciar_btnLog").disabled = false;
+    }
+    else{
+        $("iniciar_btnLog").disabled = true;
+    }  
+}
+
 function cambiarTipo(){
     estudiante = document.getElementById("es_estudiante");
     tipo_usuario = document.getElementById("tipo_usuario");
