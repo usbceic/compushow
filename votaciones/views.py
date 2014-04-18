@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 from django.shortcuts     import render_to_response, get_object_or_404, redirect
 from votaciones.models    import *
 from django.contrib.auth.models import User
@@ -47,11 +49,11 @@ def pagina_login(request):
     if(request.GET.__contains__('msg')):
         msg_id = request.GET['msg']
         if msg_id == "0":
-            msg = "Carnet o contrasena incorrecta"
+            msg = "Carnet o contraseña incorrecta."
         elif msg_id == "1":
-            msg = "El Carnet no esta en la base de datos de estudiantes de computacion, comuniquese con nosotros para resolver el problema"
+            msg = "El carnet no está en la base de datos de estudiantes de computación, comuníquese con nosotros para resolver el problema."
         elif msg_id == "2":
-            msg = "El carnet ingresado ya esta siendo usado, verifique si ya esta inscrito o comuniquese con nosotros"
+            msg = "El carnet ingresado ya está siendo usado, verifique si ya está inscrito o comuníquese con nosotros."
         else:
             msg == "error "+str(msg_id)
     
@@ -139,7 +141,7 @@ def nominaciones(request):
     if(request.GET.__contains__('msg')):
         msg_id = request.GET['msg']
         if msg_id == "0":
-            msg = "No puedes proponer dos veces la misma nominacion"
+            msg = "No puedes proponer dos veces la misma nominación."
 
     return render_to_response('votaciones/nominar/index.html',
                               diccionario_base(
@@ -337,7 +339,7 @@ def votaciones(request):
     if(EdicionActual.etapa == '1'): #nominando
         return nominaciones(request)
     if(EdicionActual.etapa == '2'): #filtrando
-        return render_to_response('votaciones/filtrando/index.html',
+        return render_to_response('votaciones/cerrado/index.html',
                                   diccionario_base({}, request),
                                   context_instance=RequestContext(request),)
     if(EdicionActual.etapa == '3'): #votando
@@ -369,7 +371,7 @@ def filtrar(request):
         if(request.GET.__contains__('msg')):
             msg_id = request.GET['msg']
             if msg_id == "0":
-                msg = "No puedes proponer dos veces la misma nominacion"
+                msg = "No puedes proponer dos veces la misma nominación."
 
         return render_to_response('votaciones/filtrar/index.html',
                                   diccionario_base(

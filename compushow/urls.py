@@ -7,7 +7,7 @@ admin.autodiscover ()
 
 urlpatterns = patterns('',
     url(r'^$'          , 'votaciones.views.home'),
-    url(r'^info$'      , 'votaciones.views.info'),
+    url(r'^informacion$'      , 'votaciones.views.info'),
     url(r'^votaciones$', 'votaciones.views.votaciones'),
     url(r'^nominar_do$'            , 'votaciones.views.nominar_do'),
     url(r'^borrar_voto_nominacion$', 'votaciones.views.borrar_voto_nominacion'),
@@ -19,10 +19,9 @@ urlpatterns = patterns('',
     url(r'^logout_do$' , 'votaciones.views.logout_do'),
     url(r'^signup_do$' , 'votaciones.views.signup_do'),
     #url(r'^filtrar$', 'votaciones.views.filtrar'),    
-    url(r'^funcion$'    , 'votaciones.views.funcion'),
-    url(r'^funcion_do$' , 'votaciones.views.funcion_do'),
+    #url(r'^funcion$'    , 'votaciones.views.funcion'),
+    #url(r'^funcion_do$' , 'votaciones.views.funcion_do'),
     url(r'^limpiar_media', 'votaciones.views.limpiar_media'),
-    url(r'^construccion$', 'votaciones.views.construccion'),
 
     #url del admin
     url(r'^admin/$', 'votaciones.views.adminAdmin'),

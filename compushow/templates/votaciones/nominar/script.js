@@ -84,7 +84,7 @@ function agregar_nominado() {
         //nuevo_nominado.insert(new Element("DIV", {'class' : "divBorrar", "onclick":"borrar_nominado_n("+nominados+")"}));
 
         col1.insert(nuevo_nominado.insert(input));
-        col2.insert(nuevo_nominado2.insert(new Element("STRONG").update("Nominar a:")).insert(autoComp));
+        col2.insert(nuevo_nominado2.insert(new Element("STRONG").update("Nominar a: ")).insert(autoComp));
         table.insert(fila.insert(col1).insert(col2));
 
         nominado_cont.insert(table);
@@ -259,7 +259,7 @@ function nominar() {
             input.value = $("complNominado"+i).innerHTML;
         }
         if(input.value==null || input.value.trim() == "") {
-            alert("El campo "+(i+1)+"° de los nominados es invalido.");
+            alert("El campo "+(i+1)+"° de los nominados es inválido.");
             return false;
         }
     }
@@ -268,7 +268,7 @@ function nominar() {
     for(i = 0; i < fotos; i++) {
         foto_id = "input_foto" + i;
         if($(foto_id).value==null || $(foto_id).value=="") {
-            alert("El campo "+(i+1)+"° de las fotos esta vacio.");
+            alert("El campo "+(i+1)+"° de las fotos esta vacío.");
             return false;
         }
     }
@@ -279,7 +279,7 @@ function nominar() {
         if(video_id != null) {
             $("input_video"+i).value = video_id;
         } else {
-            alert("El campo "+(i+1)+"° de link a youtube es invalido.")
+            alert("El campo "+(i+1)+"° de link a youtube es inválido.")
             return false;
         }
     }
@@ -309,7 +309,7 @@ function borrar_nominado_n(numero) {
 */
 
 function eliminar_voto(voto_id){
-    if(confirm("¿Desea borrar esta nominacion?")) {
+    if(confirm("¿Desea borrar esta nominación?")) {
         new Ajax.Request('/borrar_voto_nominacion',
         {
             method:'post',
@@ -320,12 +320,12 @@ function eliminar_voto(voto_id){
                 if(transport.responseText === '1') {
                     $("nominacion"+voto_id).remove();
                 } else {
-                    alert("Ocurrio un error en el servidor =s");
+                    alert("Ocurrió un error en el servidor.");
                 }
                 
             },
             onFailure: function(){
-                alert('No se pudo eliminar la nominacion\nintente más tarde.')
+                alert('No se pudo eliminar la nominación,\nintente más tarde.')
             }
         });
     }

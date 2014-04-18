@@ -2,6 +2,18 @@ Sistema del CompuShow
 
 =========
 
+DETALLES PARA REALIZARLE AL COMPUSHOW:
+
+FASE NOMINACIÓN:
+1. CompuChinazo -> escribir chinazo
+2. LOGIN -> el boton de iniciar sesion se active cuando llene ambos cuadros de texto (igual a registrarse).
+3. ERROR: Me deja entrar al login aun cuando se esta en etapa cerrada o filtrando.
+4. CERRADO -> Mejor idea.
+5. NOMINAR -> mensaje exitosamente agregado y widget mostrar fotos.
+
+
+
+
 REQUISITOS:
 	- Django 1.6.2
 	- Python 2.7.3
@@ -24,48 +36,44 @@ POSTGRESQL
 
 
 EJECUCIÓN:
-	Crear base de datos en postgresql bajo el nombre compushow, usuario: postgres y contraseña 123456
+	Crear base de datos en postgresql bajo el nombre compushow, usuario: postgres y contraseña: 123456
 
 	Para correr el proyecto:
-	1. Abrir el terminal
+	1. Abrir el terminal y nos dirigimos a la carpeta con el archivo manage.py
 	2. python manage.py syncdb #Sincroniza la base de datos
+	3. Aceptar la creacion de un usuario
+	4. Carga los valores que usaremos para la base de datos
 	   python manage.py loaddata inscritosEM14.json
-	3. python manage.py validate #Verificar si existe algún error en los modelos
-	4. python manage.py runserver #Correr el servidor
-	5. Abrir explorador
-	6. http://127.0.0.1:8000/
+	   python manage.py loaddata profesores.json
+	   python manage.py loaddata agrupaciones.json
+	5. python manage.py validate #Verificar si existe algún error en los modelos
+	6. python manage.py runserver #Correr el servidor
+	7. Abrir el explorador
+	8. http://127.0.0.1:8000/
 
-
-DETALLES PARA REALIZARLE AL COMPUSHOW:
-
-FASE NOMINACIÓN:
-
-1. Mensaje de error al subir una foto que no cumpla las condiciones.
-2. Mensaje que pudo nominar satisfactoriamente
-3. Mensaje de error al filtrar
 
 NOMINACIONES:
 CompuMami	
 CompuPapi
 CompuLove
-CompuMaster -> base de datos de los profesores
+CompuMaster
 CompuLolas	
 CompuPro
 CompuButt	
 CompuCartoon
 Comadre
 Compadre
-CompuTuki
+CompuTuky
 CompuCuchi
 CompuSelfie***
 CompuMicroondas
 CompuProductista
-CompuChinazo -> escribir chinazo
-CompuAdoptado -> se escribe el nombre
-CompuTeam -> base de datos de las agrupaciones
+CompuChinazo
+CompuAdoptado
+CompuTeam
 CompuChapita
 CompuGordito 
-CompuCheeseWheez
+CompuCheeseWhiz
 CompuIntenso
 CompuFitness	
 CompuSaurio

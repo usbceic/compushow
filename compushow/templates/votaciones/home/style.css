@@ -1,7 +1,7 @@
 #left, #center, #right {
     padding: 180px 0px;
-    width  : 326px;
-    height : 100px;
+    width  : 450px;
+    height : 110px;
     float  : left;
     text-align: center;
     cursor : pointer;
@@ -10,6 +10,16 @@
     border : 2px solid rgba(0,0,0,0.2);
     border-radius: 15px;
 }
+
+#left {
+    margin : 15px 35px;
+}
+
+
+#center {
+    margin : 15px 0px;
+}
+
 
 #left h1, #center h1, #right h1{
     text-shadow: rgb(0,0,0) 5px 5px 10px;

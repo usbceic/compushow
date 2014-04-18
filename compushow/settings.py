@@ -32,7 +32,7 @@ ETAPA = Etapas.NOMINANDO
 # Dia en el que se realizara el compushow
 FECHA_DE_EVENTO = date(date.today().year, 3, 1)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = (
@@ -70,9 +70,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'compushow',                      
         'USER': 'postgres',                      
-        'PASSWORD': '123456',                  
-        'HOST': '',
-        'PORT': '',
+        'PASSWORD': 'postgres',                  
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
