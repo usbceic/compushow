@@ -143,7 +143,7 @@ function consultar_nombre(numero) {
 }
 
 function actualizar_boton_eliminar_foto() {
-    if(fotos>0) $("boton_eliminar_foto").show();
+    if(fotos>1) $("boton_eliminar_foto").show();
     else $("boton_eliminar_foto").hide();
 }
 
@@ -154,7 +154,7 @@ function validar_foto(campo) {
         return true;
     }
     else {
-        alert("Solo puedes subir fotos");
+        alert("Debes subir al menos una foto");
         return false;
     }
 }
@@ -181,7 +181,8 @@ function agregar_foto() {
 }
 
 function eliminar_foto() {
-    if(fotos > 0) {
+    //alert("fotoooos: "+fotos);
+    if(fotos > 1) {
         $("foto"+(--fotos)).remove();
         actualizar_boton_eliminar_foto();
     }
