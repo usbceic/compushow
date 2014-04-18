@@ -181,7 +181,6 @@ function agregar_foto() {
 }
 
 function eliminar_foto() {
-    //alert("fotoooos: "+fotos);
     if(fotos > 1) {
         $("foto"+(--fotos)).remove();
         actualizar_boton_eliminar_foto();

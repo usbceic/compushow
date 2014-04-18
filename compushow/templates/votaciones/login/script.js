@@ -5,7 +5,7 @@ function validar_carnet(campo) {
 }
 
 function validar_username(campo) {
-    var username_regexp = new RegExp(/^.{4,11}$/)
+    var username_regexp = new RegExp(/^[a-z]{4,12}$/)
     return username_regexp.test(campo.value)
 }
 
@@ -39,7 +39,11 @@ function verificacion_registro() {
 }
 
 function verificacion_login() {
-    if($("usernameL").value.length> 0 && $("passwordL").value.length>0){
+    username = $("usernameL");
+    esProfesor = validar_username(username);
+    esEstudiante = validar_carnet(username);
+    usernameValido = (esProfesor || esEstudiante) && username.value.length>0;
+    if(usernameValido && $("passwordL").value.length>0){
         $("iniciar_btnLog").disabled = false;
     }
     else{

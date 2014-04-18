@@ -17,7 +17,16 @@ from decimal     import Decimal
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth         import authenticate, login, logout
 
+import re
 import string;
+
+def validarEntrada(entrada):
+    if re.match(r'.*([;\*\"\'/]|--|\\|\s).*',entrada) == None:
+        print entrada + " valida"
+        return entrada
+    else:
+        print entrada + " NO VALIDA"
+        return ""
 
 
 def diccionario_base(diccionario, request):
@@ -54,6 +63,8 @@ def pagina_login(request):
             msg = "El carnet no está en la base de datos de estudiantes de computación, comuníquese con nosotros para resolver el problema."
         elif msg_id == "2":
             msg = "El carnet ingresado ya está siendo usado, verifique si ya está inscrito o comuníquese con nosotros."
+        elif msg_id == "3":
+            msg = "Evita usar caracteres especiales para tus datos. Intenta nuevamente"            
         else:
             msg == "error "+str(msg_id)
     
@@ -63,8 +74,17 @@ def pagina_login(request):
                               )
 
 def signup_do(request):
+    username = validarEntrada(request.POST['username'])
+    password = validarEntrada(request.POST['password'])
+    email    = validarEntrada(request.POST['Email'])
+
+    if (username=="" or password =="" or email==""):
+        response = redirect(reverse('votaciones.views.pagina_login'))
+        response['Location'] += '?next='+str(request.POST['next'])+'&msg=3'
+        return response        
+
     try:
-        carnet = Carnet.objects.get(pk=request.POST['username'])
+        carnet = Carnet.objects.get(pk=username)
 
         if(carnet.usado):
             response = redirect(reverse('votaciones.views.pagina_login'))
@@ -75,9 +95,9 @@ def signup_do(request):
             carnet.save()
         
         username = carnet.numero
-        password = request.POST['password']
+        #password = request.POST['password']
 
-        user = User.objects.create_user(username, request.POST['Email'], password)
+        user = User.objects.create_user(username, email, password)
         nombres = carnet.nombre.split(' ')
         first = int(len(nombres)/2)
         user.first_name = ' '.join(nombres[:first])
@@ -90,19 +110,17 @@ def signup_do(request):
         response = redirect(reverse('votaciones.views.pagina_login'))
         response['Location'] += '?next='+str(request.POST['next'])+'&msg=1'
         return response
-    
-
 
 
 def login_do(request):
-    username = request.POST['username']
-    password = request.POST['password']
+    username = validarEntrada(request.POST['username'])
+    password = validarEntrada(request.POST['password'])
+    print "usuario " + username
+    print "password " + password
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
             login(request, user)
-            print "holaaaa"
-            print request.POST['next']
             return redirect(request.POST['next'])
 
     response = redirect(reverse('votaciones.views.pagina_login'))
