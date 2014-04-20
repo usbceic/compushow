@@ -2,14 +2,26 @@ Sistema del CompuShow
 
 =========
 
+
+
+
 DETALLES PARA REALIZARLE AL COMPUSHOW:
 
 FASE NOMINACIÓN:
-1. CompuChinazo -> escribir chinazo
-2. LOGIN -> el boton de iniciar sesion se active cuando llene ambos cuadros de texto (igual a registrarse).
-3. ERROR: Me deja entrar al login aun cuando se esta en etapa cerrada o filtrando.
-4. CERRADO -> Mejor idea.
-5. NOMINAR -> mensaje exitosamente agregado y widget mostrar fotos.
+
+1. CompuChinazo -> escribir chinazo.
+
+2. Cuando ya has iniciado sesion te deja entrar otra vez al login
+
+
+
+
+
+
+
+
+
+
 
 
 
