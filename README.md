@@ -2,30 +2,6 @@ Sistema del CompuShow
 
 =========
 
-
-
-
-DETALLES PARA REALIZARLE AL COMPUSHOW:
-
-FASE NOMINACIÓN:
-
-1. CompuChinazo -> escribir chinazo.
-
-2. Cuando ya has iniciado sesion te deja entrar otra vez al login
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 REQUISITOS:
 	- Django 1.6.2
 	- Python 2.7.3
@@ -58,34 +34,9 @@ EJECUCIÓN:
 	   python manage.py loaddata inscritosEM14.json
 	   python manage.py loaddata profesores.json
 	   python manage.py loaddata agrupaciones.json
+	   python manage.py loaddata categorias.json
 	5. python manage.py validate #Verificar si existe algún error en los modelos
 	6. python manage.py runserver #Correr el servidor
 	7. Abrir el explorador
 	8. http://127.0.0.1:8000/
-
-
-NOMINACIONES:
-CompuMami	
-CompuPapi
-CompuLove
-CompuMaster
-CompuLolas	
-CompuPro
-CompuButt	
-CompuCartoon
-Comadre
-Compadre
-CompuTuky
-CompuCuchi
-CompuSelfie***
-CompuMicroondas
-CompuProductista
-CompuChinazo
-CompuAdoptado
-CompuTeam
-CompuChapita
-CompuGordito 
-CompuCheeseWhiz
-CompuIntenso
-CompuFitness	
-CompuSaurio
+	

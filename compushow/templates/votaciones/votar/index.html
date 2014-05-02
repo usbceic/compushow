@@ -44,25 +44,23 @@
 {% block parametros_body %} onload="main()" {% endblock %}
 
 {% block contenido %}
-<h1 class="tituloExt">Etapa de Votaciones</h1>
+
+<center><h1 class="tituloExt">ETAPA DE VOTACIONES</h1></center>
 
 <div class="ayuda">
-    El Compushow se encuentra en la etapa de votaciones, en esta etapa puedes
-    votar por tus favoritos para que ganen en su respectivas categorías, revisa
-    por cada categoría todos los nominados y vota por tu preferido.
-    <div id="icono_ayuda"></div>
+    <center>El Compushow se encuentra en la etapa de votaciones, ahora podrás votar por tus preferidos para cada categoría.</center>
 </div>
 
-<div id="categorias" class="contenedor">
+
+<div id="categorias" class="contenedor"><center>
     {%for c in categorias%}
     <div id="categoria{{c.pk}}"class="categoria no_votado" onclick="cambiar_categoria(+'{{c.pk}}')">{{c.nombre}}</div>
     {%endfor%}
-</div>
+</center></div>
 
 <div id="cont_votacion" class="contenedor">
     <div class="ayuda">
-        Selecciona una categoría de las que estan arriba para ver sus nominados.
-        <div id="icono_ayuda"></div>
+    	<p align="center">Selecciona una categoría de las que están arriba para ver sus nominados.</p>
     </div>
 </div>
 

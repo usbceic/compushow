@@ -40,11 +40,11 @@ var Nominacion = Class.create({
     },
     toString: function() {
         var votado_class = this.votado ? "votado" : "no_votado";
-        var str = "<div id='nominado"+this.id+"' class='nominado "+votado_class+"' onclick='cambiar_nominado("+this.id+")'>";
-        str += "<div class='imagen'><img src='"+this.foto_id+"' height='64' ></div>";
-        str += "<div class='nombres'>";
+        var str = "<div id='nominado"+this.id+"' class='nominado "+votado_class+"' onclick='cambiar_nominado("+this.id+")'></td>";
+        str += "<table><tr><td><div class='imagen'><img src='"+this.foto_id+"' height='64' ></div></td>";
+        str += "<td><div class='nombres'>";
         str += this.nominados.join("<br>");
-        str += "</div></div>";
+        str += "</td></tr></table></div></div>";
         return str;
     }
 });
@@ -100,8 +100,8 @@ function llenar_lista_nominados() {
     $("titulo_categoria").update(categoria.nombre);
     $("lista_nominados").update(categoria.nominaciones.join('\n'));
     
-    $("detalles_nominado").update(DIV_ayuda("Selecciona a un nominado para sus fotos y videos, y asi poder votar por él."));
-    $("detalles_nominado").insert(DIV_ayuda(categoria.nombre+":<br>"+categoria.descripcion));
+    $("detalles_nominado").update(DIV_ayuda("Selecciona a un nominado para sus fotos y así poder votar por él."));
+    $("detalles_nominado").insert(DIV_ayuda(categoria.nombre+": <p>"+categoria.descripcion+".</p>"));
 }
 
 function cambiar_nominado(id) {
@@ -126,7 +126,7 @@ function cambiar_nominado(id) {
         media_len = media.length,
         ayuda     = "";
 
-    if(media_len > 0) ayuda = "Selecciona alguna foto o video en la lista de abajo para verla más grande";
+    if(media_len > 0) ayuda = "Selecciona alguna foto en la lista de abajo para verla más grande.";
     
     $("detalles_nominado").insert(new Element("DIV", {"id":"vista_media"}).update(DIV_ayuda(ayuda)));
 
